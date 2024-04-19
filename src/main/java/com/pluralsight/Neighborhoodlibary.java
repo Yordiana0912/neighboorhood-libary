@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.util.Scanner;
+
 public class Neighborhoodlibary {
     public static void main(String[] args) {
 // Step 1- get some books
@@ -29,17 +31,57 @@ public class Neighborhoodlibary {
         Book b20 = new Book(20,"12335","Kwad The Wolf Story", false, "Unknown " );
 
 
-        System.out.println(b1);
 
         Book[] books = {
-                b1
+                b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15, b16, b17, b18, b19, b20
         };
 
+        // let the user select one number
+        //print out a prompt
+        //read in a number
+        // show the book with that number
+
+        System.out.println(" Please select Book from the following list : ");
+        for (Book book : books) {
+            System.out.println( book.getId() + " " +book.getTitle());
+        }
+        System.out.println("\nEnter the id number of the book you want: ");
+
+        Scanner scanner = new Scanner(System.in);
+             String input = scanner.nextLine();
+             int inputNumber = Integer.parseInt(input);
+
+             boolean found = false;
+
+        while(!found) {
 
 
+            Book theBook = findBookById(inputNumber, books);
+            if (theBook != null ) found = true;
 
+            if (found) {
+                System.out.println("I FOUND IT !!!!");
+
+            } else {
+                System.out.println("Sorry.  I don't have that book id...");
+            }
+        }
     }
 
 
+    static void printAllBooks(Book[] books) {
+        for (Book b : books) {
+            System.out.println(b.getId() + ":  " + b.getTitle());
+        }
+    }
+
+    static Book findBookById(int id, Book[] books) {
+        for (Book b : books) {
+            if (id == b.getId()) {
+                return b;
+            }
+        }
+        return null;
+    }
 
 }
