@@ -54,8 +54,6 @@ public class Neighborhoodlibary {
              boolean found = false;
 
         while(!found) {
-
-
             Book theBook = findBookById(inputNumber, books);
             if (theBook != null ) found = true;
 
